@@ -37,11 +37,11 @@ const LoginPage = () => {
     }
 
     try {
-      console.log("로그인 요청 전 - URL:", "/auth/admin/login", "데이터:", {
+      console.log("로그인 요청 전 - URL:", "/admin/login", "데이터:", {
         email,
         password,
       });
-      const response = await api.post("/auth/admin/login", {
+      const response = await api.post("/admin/login", {
         email,
         password,
       });
