@@ -48,11 +48,12 @@ export const LoginPageStyled = styled.div`
         .login-pw {
           width: 100%;
           height: 45px;
-          border-radius: 4px;
+
           padding: 14px 14px;
           font-size: 15px;
           margin: 3px 0;
-          border: 1px solid rgb(214, 222, 235);
+          border: none;
+          border-bottom: 1px solid rgb(214, 222, 235);
 
           &:focus {
             outline: none;
