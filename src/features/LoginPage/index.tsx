@@ -24,8 +24,6 @@ const LoginPage = () => {
   const handleLoginSubmit = async (e: any) => {
     e.preventDefault();
 
-    console.log("로그인 시도 - 이메일:", email, "비밀번호:", password);
-
     if (!email) {
       setErrorMessage("아이디(이메일)를 입력해주세요");
       return;
@@ -37,36 +35,23 @@ const LoginPage = () => {
     }
 
     try {
-      console.log("로그인 요청 전 - URL:", "/admin/login", "데이터:", {
-        email,
-        password,
-      });
-      const response = await api.post("/admin/login", {
-        email,
-        password,
-      });
-      console.log(
-        "로그인 요청 후 - 응답 상태:",
-        response.status,
-        "응답 데이터:",
-        response.data
-      );
+      // 🚨 백엔드에서 직접 res.send 응답하면 response.data 없음
+      const response = await api.post("/admin/login", { email, password });
 
-      // 성공적으로 로그인한 경우 대시보드로 이동
-      if (response.status === 200 || response.status === 201) {
-        setErrorMessage("");
-        sessionStorage.setItem("isAdminLoggedIn", "true");
-
-        // ✅ 응답 데이터 확인 및 상태 관리
-        console.log("로그인 성공 응답:", response.data);
-
-        router.push("/dashboard");
-      } else {
-        setErrorMessage("아이디 또는 비밀번호를 확인해주세요");
-      }
+      // 응답 상태 직접 확인 못 할 수 있으므로 예외 없으면 성공으로 간주
+      console.log("로그인 성공");
+      setErrorMessage("");
+      sessionStorage.setItem("isAdminLoggedIn", "true");
+      router.push("/dashboard");
     } catch (error: any) {
-      setErrorMessage(`서버 오류가 발생했습니다: ${error.message}`);
-      console.error("로그인 요청 오류:", error);
+      // NestJS에서 실패 시 res.status(401).send("실패") 하면 여기로 떨어짐
+      const msg =
+        error.response?.data?.message ||
+        error.response?.data ||
+        "아이디 또는 비밀번호를 확인해주세요";
+
+      setErrorMessage(`로그인 실패: ${msg}`);
+      console.error("로그인 오류:", error);
     }
   };
 
