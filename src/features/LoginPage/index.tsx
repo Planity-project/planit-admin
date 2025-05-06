@@ -35,16 +35,13 @@ const LoginPage = () => {
     }
 
     try {
-      // 🚨 백엔드에서 직접 res.send 응답하면 response.data 없음
       const response = await api.post("/admin/login", { email, password });
 
-      // 응답 상태 직접 확인 못 할 수 있으므로 예외 없으면 성공으로 간주
       console.log("로그인 성공");
       setErrorMessage("");
       sessionStorage.setItem("isAdminLoggedIn", "true");
       router.push("/dashboard");
     } catch (error: any) {
-      // NestJS에서 실패 시 res.status(401).send("실패") 하면 여기로 떨어짐
       const msg =
         error.response?.data?.message ||
         error.response?.data ||
