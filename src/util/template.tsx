@@ -19,12 +19,12 @@ export const sidebarMenus: MenuItem[] = [
     label: "회원 관리",
     children: [
       {
-        key: "/users/info",
+        key: "/users/manage",
         label: <Link href="/users/manage">회원 정보</Link>,
       },
       {
         key: "/users/album",
-        label: <Link href="/users/report">앨범 관리</Link>,
+        label: <Link href="/users/album">앨범 관리</Link>,
       },
       {
         key: "/users/blacklist",
@@ -34,16 +34,16 @@ export const sidebarMenus: MenuItem[] = [
   },
 
   {
-    key: "/report",
-    label: <Link href="/hashtag">신고 관리</Link>,
+    key: "/reports",
+    label: "신고 관리",
     children: [
       {
-        key: "/report/comment",
-        label: <Link href="/users/manage">댓글</Link>,
+        key: "/reports/comment",
+        label: <Link href="/reports/comment">댓글</Link>,
       },
       {
-        key: "/report/post",
-        label: <Link href="/users/report">게시글</Link>,
+        key: "/reports/post",
+        label: <Link href="/reports/post">게시글</Link>,
       },
     ],
   },
