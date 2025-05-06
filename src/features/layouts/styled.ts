@@ -4,7 +4,7 @@ import { Layout } from "antd";
 const { Sider } = Layout;
 
 export const CustomSider = styled(Sider)`
-  background-color: rgba(94, 234, 96, 0.3) !important;
+  background-color: rgb(83, 183, 232, 0.6) !important;
   color: #fff;
 
   .ant-menu {
@@ -17,6 +17,6 @@ export const CustomSider = styled(Sider)`
   }
 
   .ant-menu-item:hover {
-    background-color: rgba(94, 234, 96, 0.3) !important;
+    background-color: rgb(83, 183, 232, 0.9) !important;
   }
 `;
