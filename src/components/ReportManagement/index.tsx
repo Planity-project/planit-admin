@@ -170,7 +170,7 @@ const ReportManagement = ({ data, target_type }: Props) => {
         </div>
       </div>
       <div className="manage-info">
-        <div>{target_type === "comment" ? "댓글" : "소설"}</div>
+        <div>{target_type === "comment" ? "댓글" : "게시글"}</div>
         <div className="manage-total-num">총 {report.length}건</div>
         <Select
           value={order}
