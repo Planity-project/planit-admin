@@ -220,17 +220,10 @@ const UserManage = () => {
   return (
     <UserManageStyled className={clsx("manage-wrap")}>
       <div className="manage-title-box">
-        <TitleCompo title="앨범 회원 관리" />
+        <TitleCompo title="회원 관리" />
         <div>
-          <Button
-            onClick={() => {
-              router.push("/memberadd");
-            }}
-          >
-            회원추가
-          </Button>
           <Button className="manage-delete-button" onClick={WithdrawUser}>
-            회원삭제
+            회원 탈퇴
           </Button>
         </div>
       </div>
