@@ -1,6 +1,10 @@
 import Album from "@/features/UserManage";
 
 const album = () => {
-  return <Album />;
+  return (
+    <div>
+      <Album />
+    </div>
+  );
 };
 export default album;

@@ -220,7 +220,7 @@ const UserManage = () => {
   return (
     <UserManageStyled className={clsx("manage-wrap")}>
       <div className="manage-title-box">
-        <TitleCompo title="회원 관리" />
+        <TitleCompo title="앨범 회원 관리" />
         <div>
           <Button
             onClick={() => {

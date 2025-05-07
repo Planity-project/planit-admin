@@ -1,6 +1,10 @@
 import UserManage from "@/features/UserManage";
 
 const Manage = () => {
-  return <UserManage />;
+  return (
+    <div>
+      <UserManage />
+    </div>
+  );
 };
 export default Manage;
