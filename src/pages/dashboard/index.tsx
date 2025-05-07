@@ -1,7 +1,11 @@
 import DashBoard from "@/features/DashPage";
 
 const DashboardPage = () => {
-  return <DashBoard />;
+  return (
+    <>
+      <DashBoard />
+    </>
+  );
 };
 
 export default DashboardPage;

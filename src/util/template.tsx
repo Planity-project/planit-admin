@@ -12,7 +12,7 @@ export interface MenuItem {
 export const sidebarMenus: MenuItem[] = [
   {
     key: "/dashboard",
-    label: "대시보드",
+    label: <Link href="/dashboard">대시보드</Link>,
   },
   {
     key: "/users",

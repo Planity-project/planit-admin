@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { sidebarMenus } from "@/util/template";
 import { CustomSider } from "./styled";
 
-const Sidebar = () => {
+const AdminSidebar = () => {
   const router = useRouter();
 
   return (
@@ -11,7 +11,7 @@ const Sidebar = () => {
       <Menu
         mode="inline"
         selectedKeys={[router.pathname]}
-        defaultOpenKeys={["/users"]}
+        defaultOpenKeys={["/dashboard"]}
         style={{ height: "100%", borderRight: 0 }}
         items={sidebarMenus}
       />
@@ -19,4 +19,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default AdminSidebar;

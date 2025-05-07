@@ -1,6 +1,6 @@
 import UserManage from "@/features/UserManage";
 
-const manage = () => {
+const Manage = () => {
   return <UserManage />;
 };
-export default manage;
+export default Manage;
