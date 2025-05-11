@@ -1,10 +1,22 @@
-import BlackList from "@/features/UserManage";
+import UserManage from "@/features/UserManage";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
-const blacklist = () => {
+const BlacklistPage = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace({
+      pathname: router.pathname,
+      query: { type: "blacklist" },
+    });
+  }, []);
+
   return (
     <div>
-      <BlackList />
+      <UserManage />
     </div>
   );
 };
-export default blacklist;
+
+export default BlacklistPage;

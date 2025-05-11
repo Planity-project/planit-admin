@@ -16,14 +16,31 @@ const UserManage = () => {
   const [sortedUsers, setSortedUsers] = useState<any[]>([]);
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const router = useRouter();
+  const { query } = router;
+
+  const rawType = query.type;
+  const type = Array.isArray(rawType) ? rawType[0] : rawType || "user";
+
+  const titleMap: { [key: string]: string } = {
+    user: "회원 관리",
+    album: "앨범 회원 관리",
+    blacklist: "블랙리스트 회원 관리",
+  };
+
+  const pageTitle = titleMap[type] || "회원 관리";
 
   const getUserList = async () => {
     try {
-      // 유저 정보를 불러오는 axios 요청
-      const res = await api.get("/users");
-      const data = res.data;
+      let endpoint = "/user";
 
-      console.log(data);
+      if (type === "album") {
+        endpoint = "/user/album";
+      } else if (type === "blacklist") {
+        endpoint = "/user/blacklist";
+      }
+
+      const res = await api.get(endpoint);
+      const data = res.data;
 
       const mapped = data.map((x: any) => ({
         key: x.id,
@@ -33,7 +50,7 @@ const UserManage = () => {
         report_count: x.report_count || 0,
         status: x.status,
         user_type: x.user_type,
-        created_at: x.joinedDate || x.created_at, // 가입 날짜 필드명 확인
+        created_at: x.joinedDate || x.created_at,
       }));
 
       setUsers(mapped);
@@ -42,12 +59,10 @@ const UserManage = () => {
     }
   };
 
-  // 유저정보
   useEffect(() => {
     getUserList();
-  }, []);
+  }, [type]);
 
-  // 유저 정렬하기
   const sortUsers = () => {
     let sorted = [...users];
 
@@ -72,15 +87,14 @@ const UserManage = () => {
           : nameB.localeCompare(nameA);
       });
     }
+
     setSortedUsers(sorted);
   };
 
-  // 유저정렬
   useEffect(() => {
     sortUsers();
   }, [userOrder, notiOrder, sortKey, users]);
 
-  // 엑셀 다운로드
   const handleDownloadExcel = () => {
     const excelData = users.map((user) => ({
       순서: user.id,
@@ -104,7 +118,6 @@ const UserManage = () => {
     saveAs(file, "회원목록.xlsx");
   };
 
-  // 회원삭제
   const WithdrawUser = async () => {
     if (selectedRowKeys.length === 0) {
       message.warning("삭제할 회원을 선택해주세요.");
@@ -116,15 +129,14 @@ const UserManage = () => {
         data: { userIds: selectedRowKeys },
       });
       message.success("선택한 회원을 완전히 삭제했습니다.");
-      getUserList(); // 목록 다시 불러오기
-      setSelectedRowKeys([]); // 선택 초기화
+      getUserList();
+      setSelectedRowKeys([]);
     } catch (err) {
       console.error("회원 삭제 실패:", err);
       message.error("회원 삭제에 실패했습니다. 잠시 후 다시 시도해주세요.");
     }
   };
 
-  // 테이블 rowSelection 설정
   const rowSelection = {
     selectedRowKeys,
     onChange: (keys: React.Key[]) => {
@@ -149,7 +161,7 @@ const UserManage = () => {
       dataIndex: "user",
       sorter: true,
       sortDirections: ["ascend", "descend"],
-      onHeaderCell: (column: any) => ({
+      onHeaderCell: () => ({
         onClick: () => {
           setSortKey("user");
           setUserOrder(userOrder === "DESC" ? "ASC" : "DESC");
@@ -162,7 +174,7 @@ const UserManage = () => {
       dataIndex: "report_count",
       sorter: true,
       sortDirections: ["ascend", "descend"],
-      onHeaderCell: (column: any) => ({
+      onHeaderCell: () => ({
         onClick: () => {
           setSortKey("report_count");
           setNotiOrder(notiOrder === "DESC" ? "ASC" : "DESC");
@@ -220,7 +232,7 @@ const UserManage = () => {
   return (
     <UserManageStyled className={clsx("manage-wrap")}>
       <div className="manage-title-box">
-        <TitleCompo title="회원 관리" />
+        <TitleCompo title={pageTitle} />
         <div>
           <Button className="manage-delete-button" onClick={WithdrawUser}>
             회원 탈퇴
@@ -233,7 +245,7 @@ const UserManage = () => {
           options={option1}
           onChange={(e) => {
             setUserOrder(e);
-            setSortKey("created_at"); // 최신순/오래된순 정렬 기준을 가입일로 변경
+            setSortKey("created_at");
           }}
         />
         <Select
@@ -241,7 +253,7 @@ const UserManage = () => {
           options={option2}
           onChange={(e) => {
             setNotiOrder(e);
-            setSortKey("noti");
+            setSortKey("report_count");
           }}
         />
       </div>
@@ -258,4 +270,5 @@ const UserManage = () => {
     </UserManageStyled>
   );
 };
+
 export default UserManage;
