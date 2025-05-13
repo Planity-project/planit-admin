@@ -7,6 +7,7 @@ import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 import { useRouter } from "next/router";
 import TitleCompo from "@/components/TitleCompo";
+import { AxiosError } from "axios";
 
 const UserManage = () => {
   const [userOrder, setUserOrder] = useState("DESC");
@@ -15,6 +16,7 @@ const UserManage = () => {
   const [users, setUsers] = useState<any[]>([]);
   const [sortedUsers, setSortedUsers] = useState<any[]>([]);
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
+  const [selectedAlbumId, setSelectedAlbumId] = useState<number | null>(null);
   const router = useRouter();
   const { query } = router;
 
@@ -30,18 +32,23 @@ const UserManage = () => {
   const pageTitle = titleMap[type] || "회원 관리";
 
   const getUserList = async () => {
-    try {
-      let endpoint = "/user";
+    if (type === "album" && selectedAlbumId === null) {
+      return;
+    }
 
-      if (type === "album") {
-        endpoint = "/user/album";
+    try {
+      let res;
+      if (type === "album" && selectedAlbumId !== null) {
+        res = await api.get("/users/albumUser", {
+          params: { albumId: selectedAlbumId },
+        });
       } else if (type === "blacklist") {
-        endpoint = "/user/blacklist";
+        res = await api.get("/users/blacklist");
+      } else {
+        res = await api.get("/users");
       }
 
-      const res = await api.get(endpoint);
       const data = res.data;
-
       const mapped = data.map((x: any) => ({
         key: x.id,
         id: x.id,
@@ -54,8 +61,15 @@ const UserManage = () => {
       }));
 
       setUsers(mapped);
-    } catch (err) {
-      console.error("유저 불러오기 실패", err);
+    } catch (err: unknown) {
+      if (err instanceof AxiosError) {
+        console.error("유저 불러오기 실패:", err);
+        console.error("서버 응답 에러:", err.response?.data);
+        console.error("응답 상태 코드:", err.response?.status);
+        console.error("응답 헤더:", err.response?.headers);
+      } else {
+        console.error("알 수 없는 에러:", err);
+      }
     }
   };
 

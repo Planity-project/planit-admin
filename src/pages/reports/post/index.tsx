@@ -9,14 +9,14 @@ const PostREports = () => {
     const getReports = async () => {
       const res = await api.get("/reports");
       const filtered = res.data.filter(
-        (report: any) => report.target_type === "chapter"
+        (report: any) => report.target_type === "post"
       );
-      setData(filtered); // target_type이 "chapter"인 것만 저장
+      setData(filtered);
     };
     getReports();
   }, []);
 
-  return <ReportManagement data={data} target_type="chapter" />;
+  return <ReportManagement data={data} target_type="post" />;
 };
 
 export default PostREports;

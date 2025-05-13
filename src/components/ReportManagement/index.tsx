@@ -19,7 +19,7 @@ interface ReportData {
 
 interface Props {
   data: ReportData[];
-  target_type: "comment" | "chapter";
+  target_type: "comment" | "post";
 }
 
 const ReportManagement = ({ data, target_type }: Props) => {

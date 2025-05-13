@@ -35,7 +35,7 @@ const LoginPage = () => {
     }
 
     try {
-      const response = await api.post("/admin/login", { email, password });
+      const response = await api.post("/auth/admin/login", { email, password });
 
       console.log("로그인 성공");
       setErrorMessage("");

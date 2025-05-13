@@ -41,8 +41,8 @@ export const sidebarMenus = createSidebarMenus([
         label: "회원 정보",
       },
       {
-        key: "/users/album",
-        label: "앨범 회원 관리",
+        key: "/users/albumlist",
+        label: "앨범 관리",
       },
       {
         key: "/users/blacklist",
