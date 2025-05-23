@@ -17,7 +17,7 @@ const MemberEdit = ({ id }: MemberEditProps) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await api.get(`/user/${id}`);
+        const res = await api.get(`/users/${id}`);
         const user = res.data;
         setNickname(user.nickname);
         setStatus(user.status);
@@ -33,7 +33,7 @@ const MemberEdit = ({ id }: MemberEditProps) => {
 
   const handleSave = async () => {
     try {
-      await api.patch(`/user/${id}`, { nickname, status });
+      await api.patch(`/users/${id}`, { nickname, status });
       message.success("회원 정보가 수정되었습니다.");
     } catch (err) {
       message.error("수정에 실패했습니다.");
@@ -42,7 +42,8 @@ const MemberEdit = ({ id }: MemberEditProps) => {
 
   return (
     <MemberEditStyled className="edit-wrap">
-      <h2>회원 정보 수정</h2>
+      <h2 className="edit-title">회원 정보 수정</h2>
+
       <p className="info-text">
         <b>이메일:</b> {email}
       </p>

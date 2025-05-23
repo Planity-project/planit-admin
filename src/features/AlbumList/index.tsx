@@ -123,9 +123,7 @@ const AlbumList = () => {
       title: "관리",
       render: (data: any) => (
         <Button
-          onClick={() =>
-            router.push(`/memberedit?type=album&albumId=${data.id}`)
-          }
+          onClick={() => router.push(`/users/albumuserlist?albumId=${data.id}`)}
         >
           관리
         </Button>

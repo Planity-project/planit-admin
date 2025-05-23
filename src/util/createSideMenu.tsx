@@ -59,8 +59,8 @@ export const sidebarMenus = createSidebarMenus([
         label: "댓글",
       },
       {
-        key: "/reports/post",
-        label: "게시글",
+        key: "/reports/user",
+        label: "회원",
       },
     ],
   },

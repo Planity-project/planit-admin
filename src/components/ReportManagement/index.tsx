@@ -19,7 +19,7 @@ interface ReportData {
 
 interface Props {
   data: ReportData[];
-  target_type: "comment" | "post";
+  target_type: "comment" | "user";
 }
 
 const ReportManagement = ({ data, target_type }: Props) => {
@@ -31,7 +31,6 @@ const ReportManagement = ({ data, target_type }: Props) => {
 
   useEffect(() => {
     setReport(data);
-    console.log("받아온 신고 데이터 (ReportManagement):", data);
   }, [data]);
 
   const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
@@ -170,7 +169,7 @@ const ReportManagement = ({ data, target_type }: Props) => {
         </div>
       </div>
       <div className="manage-info">
-        <div>{target_type === "comment" ? "댓글" : "게시글"}</div>
+        <div>{target_type === "comment" ? "댓글" : "회원"}</div>
         <div className="manage-total-num">총 {report.length}건</div>
         <Select
           value={order}

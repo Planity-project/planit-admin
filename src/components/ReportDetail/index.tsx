@@ -19,7 +19,7 @@ interface ReportData {
 
 interface Props {
   data: ReportData;
-  target_type: "comment" | "post";
+  target_type: "comment" | "user";
 }
 
 const ReportDetail = ({ data, target_type }: Props) => {
@@ -38,7 +38,7 @@ const ReportDetail = ({ data, target_type }: Props) => {
 
           message.success(
             `${
-              target_type === "comment" ? "댓글" : "게시글"
+              target_type === "comment" ? "댓글" : "회원"
             } 신고가 삭제되었습니다.`
           );
           router.push(`/reports/${target_type}`);
@@ -75,7 +75,7 @@ const ReportDetail = ({ data, target_type }: Props) => {
   return (
     <ReportDetailStyled className={clsx("reportdetail-wrap")}>
       <div className="report-header">
-        <div>{target_type === "comment" ? "댓글" : "게시글"} 신고 상세</div>
+        <div>{target_type === "comment" ? "댓글" : "회원"} 신고 상세</div>
         <Button>목록으로</Button>
       </div>
 
@@ -96,7 +96,7 @@ const ReportDetail = ({ data, target_type }: Props) => {
 
       <div className="row">
         <div className="label">
-          신고 내용 ({target_type === "comment" ? "댓글" : "게시글"})
+          신고 내용 ({target_type === "comment" ? "댓글" : "회원"})
         </div>
         <div className="value">{data.reported_content}</div>
       </div>

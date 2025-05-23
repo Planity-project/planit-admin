@@ -44,7 +44,7 @@ const ReportDetail = () => {
   if (loading) return <div>로딩 중...</div>;
   if (!report) return <div>해당 신고를 찾을 수 없습니다.</div>;
 
-  return <ReportDetailPage data={report} target_type="post" />;
+  return <ReportDetailPage data={report} target_type="user" />;
 };
 
 export default ReportDetail;
