@@ -30,7 +30,7 @@ const ReportDetail = ({ data, target_type }: Props) => {
       okText: "삭제",
       cancelText: "취소",
       okButtonProps: {
-        style: { backgroundColor: "#c47ad7" },
+        style: { backgroundColor: "rgb(83, 183, 232, 0.6)" },
       },
       async onOk() {
         try {
@@ -57,7 +57,7 @@ const ReportDetail = ({ data, target_type }: Props) => {
       okText: "예",
       cancelText: "아니오",
       okButtonProps: {
-        style: { backgroundColor: "#c47ad7" },
+        style: { backgroundColor: "rgb(83, 183, 232, 0.6)" },
       },
       async onOk() {
         try {
