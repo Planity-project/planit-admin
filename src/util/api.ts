@@ -7,7 +7,7 @@ import axios from "axios";
 // export default api;
 
 const api = axios.create({
-  baseURL: "http://localhost:5001",
+  baseURL: "https://planit.ai.kr",
   withCredentials: true,
 });
 
