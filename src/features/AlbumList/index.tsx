@@ -28,10 +28,10 @@ const AlbumList = () => {
       const mapped = data.map((x: any) => ({
         key: x.id,
         id: x.id,
-        title: x.title || "제목 없음",
+        title: x.album_title || "제목 없음", // ✅ 올바른 키로 변경
         leader: x.leader || "리더 없음",
-        paid: x.paid ? "결제 완료" : "미결제",
-        createdAt: x.createdAt,
+        paid: x.is_paid ? "결제 완료" : "미결제", // ✅ 올바른 키로 변경
+        createdAt: x.created_at, // ✅ 올바른 키로 변경
       }));
 
       setAlbums(mapped);
