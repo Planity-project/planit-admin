@@ -7,7 +7,7 @@ import axios from "axios";
 // export default api;
 
 const api = axios.create({
-  baseURL: "https://planit.ai.kr",
+  baseURL: "https://planit.ai.kr/admin",
   withCredentials: true,
 });
 
