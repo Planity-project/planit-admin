@@ -47,7 +47,7 @@ const BannerDetail = () => {
             <Descriptions.Item label="배너 미리보기">
               <img
                 className="detail-image"
-                src={`http://localhost:5001${banner.image_path}`}
+                src={`https://planit.ai.kr/api/${banner.image_path}`}
                 alt={banner.title}
               />
             </Descriptions.Item>
