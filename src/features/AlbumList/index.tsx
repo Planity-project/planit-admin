@@ -22,6 +22,7 @@ const AlbumList = () => {
   const getAlbumList = async () => {
     try {
       const res = await api.get("/users/albumlist");
+      console.log("앨범 목록 API 응답:", res.data);
       const data = res.data;
 
       const mapped = data.map((x: any) => ({
