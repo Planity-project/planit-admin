@@ -22,6 +22,8 @@ const transpileModules = [
 ];
 
 const nextConfig = {
+  basePath: "/admin",
+  assetPrefix: "/admin",
   reactStrictMode: true,
   swcMinify: true,
   compiler: {
