@@ -12,7 +12,7 @@ import { AxiosError } from "axios";
 const UserManage = () => {
   const [userOrder, setUserOrder] = useState("DESC");
   const [notiOrder, setNotiOrder] = useState("DESC");
-  const [sortKey, setSortKey] = useState("created_at");
+  const [sortKey, setSortKey] = useState("createdAt");
   const [users, setUsers] = useState<any[]>([]);
   const [sortedUsers, setSortedUsers] = useState<any[]>([]);
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
@@ -57,7 +57,7 @@ const UserManage = () => {
         report_count: x.report_count || 0,
         status: x.status,
         user_type: x.user_type,
-        created_at: x.joinedDate || x.created_at,
+        createdAt: x.joinedDate || x.createdAt,
       }));
 
       setUsers(mapped);
@@ -80,11 +80,11 @@ const UserManage = () => {
   const sortUsers = () => {
     let sorted = [...users];
 
-    if (sortKey === "created_at") {
+    if (sortKey === "createdAt") {
       sorted.sort((a, b) =>
         userOrder === "DESC"
-          ? new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-          : new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+          ? new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          : new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
       );
     } else if (sortKey === "report_count") {
       sorted.sort((a, b) =>
@@ -114,7 +114,7 @@ const UserManage = () => {
       순서: user.id,
       아이디: user.email,
       신고횟수: user.report_count,
-      가입일: user.created_at,
+      가입일: user.createdAt,
       상태: user.status?.props?.children,
       권한: user.user_type,
     }));
@@ -230,7 +230,7 @@ const UserManage = () => {
           <div className="run">활동</div>
         ),
       user_type: x?.user_type,
-      created_at: x?.created_at,
+      createdAt: x?.createdAt,
     }));
   }, [sortedUsers]);
 
@@ -259,7 +259,7 @@ const UserManage = () => {
           options={option1}
           onChange={(e) => {
             setUserOrder(e);
-            setSortKey("created_at");
+            setSortKey("createdAt");
           }}
         />
         <Select

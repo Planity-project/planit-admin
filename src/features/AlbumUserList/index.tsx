@@ -47,7 +47,6 @@ const AlbumUserList = () => {
       setUsers(users.filter((user) => !selectedRowKeys.includes(user.id)));
       setSelectedRowKeys([]);
     } catch (err) {
-      console.error("유저 삭제 실패:", err);
       message.error("유저 삭제 중 오류가 발생했습니다.");
     }
   };

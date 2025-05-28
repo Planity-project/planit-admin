@@ -13,7 +13,7 @@ const AlbumList = () => {
   const { message } = AntdApp.useApp();
   const [userOrder, setUserOrder] = useState("DESC");
   const [notiOrder, setNotiOrder] = useState("DESC");
-  const [sortKey, setSortKey] = useState("created_at");
+  const [sortKey, setSortKey] = useState("createdAt");
   const [albums, setAlbums] = useState<any[]>([]);
   const [sortedAlbums, setSortedAlbums] = useState<any[]>([]);
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
@@ -22,6 +22,7 @@ const AlbumList = () => {
   const getAlbumList = async () => {
     try {
       const res = await api.get("/users/albumlist");
+      console.log("앨범 목록 API 응답:", res.data);
       const data = res.data;
 
       const mapped = data.map((x: any) => ({
@@ -30,12 +31,11 @@ const AlbumList = () => {
         title: x.title || "제목 없음",
         leader: x.leader || "리더 없음",
         paid: x.paid ? "결제 완료" : "미결제",
-        created_at: x.created_at,
+        createdAt: x.createdAt,
       }));
 
       setAlbums(mapped);
     } catch (err) {
-      console.error("앨범 불러오기 실패", err);
       message.error("앨범 목록을 불러오는데 실패했습니다.");
     }
   };
@@ -47,11 +47,11 @@ const AlbumList = () => {
   const sortAlbums = () => {
     let sorted = [...albums];
 
-    if (sortKey === "created_at") {
+    if (sortKey === "createdAt") {
       sorted.sort((a, b) =>
         userOrder === "DESC"
-          ? new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-          : new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+          ? new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          : new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
       );
     } else if (sortKey === "report_count") {
       sorted.sort((a, b) =>
@@ -74,7 +74,7 @@ const AlbumList = () => {
       타이틀: album.title,
       리더: album.leader,
       결제여부: album.paid,
-      생성일: album.created_at,
+      생성일: album.createdAt,
     }));
 
     const worksheet = XLSX.utils.json_to_sheet(excelData);
@@ -153,7 +153,7 @@ const AlbumList = () => {
           options={option1}
           onChange={(e) => {
             setUserOrder(e);
-            setSortKey("created_at");
+            setSortKey("createdAt");
           }}
         />
         <Select

@@ -9,12 +9,15 @@ import type { ColumnsType } from "antd/es/table";
 
 interface ReportData {
   id: number;
-  content: string;
   reason: string;
-  reporterId: string;
-  created_at: string;
+  createdAt: string;
   reported_user_id: number;
-  // status: "pending" | "processed"; // 신고 상태 추가 가능
+  reporter?: {
+    id: number;
+    nickname?: string;
+    name?: string;
+  };
+  reported_content?: string;
 }
 
 interface Props {
@@ -29,6 +32,7 @@ const ReportManagement = ({ data, target_type }: Props) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const [order, setOrder] = useState<"DESC" | "ASC">("DESC");
 
+  // 최초 데이터 설정
   useEffect(() => {
     setReport(data);
   }, [data]);
@@ -37,7 +41,7 @@ const ReportManagement = ({ data, target_type }: Props) => {
     setSelectedRowKeys(newSelectedRowKeys);
   };
 
-  // ✅ 신고 처리 API 호출
+  // 신고 처리
   const handleReportAdd = async () => {
     const selectedReports = report.filter((item) =>
       selectedRowKeys.includes(item.id)
@@ -50,20 +54,18 @@ const ReportManagement = ({ data, target_type }: Props) => {
 
       message.success("신고가 성공적으로 처리되었습니다.");
 
-      // 처리된 항목은 리스트에서 제거
       const updatedReport = report.filter(
         (item) => !selectedRowKeys.includes(item.id)
       );
-      setReport(updatedReport);
 
+      setReport(updatedReport);
       setSelectedRowKeys([]);
     } catch (error) {
-      console.error("신고 처리 실패:", error);
       message.error("신고 처리 중 문제가 발생했습니다.");
     }
   };
 
-  // ❌ 선택 삭제
+  // 삭제 처리
   const handleDelete = async () => {
     try {
       await Promise.all(
@@ -73,10 +75,10 @@ const ReportManagement = ({ data, target_type }: Props) => {
         (item: ReportData) => !selectedRowKeys.includes(item.id)
       );
       message.success("선택된 신고가 삭제되었습니다.");
+
       setReport(filtered);
       setSelectedRowKeys([]);
     } catch (err) {
-      console.error("삭제 중 에러 발생:", err);
       message.error("삭제 중 오류가 발생했습니다.");
     }
   };
@@ -99,27 +101,35 @@ const ReportManagement = ({ data, target_type }: Props) => {
       title: "신고 대상",
       dataIndex: "reported_content",
       key: "reported_content",
-      render: (text: string) => text || "내용 없음",
+      render: (text: string) => {
+        return text || "내용 없음";
+      },
       width: "35%",
     },
     {
       title: "신고자",
       dataIndex: "reporterId",
       key: "reporterId",
-      render: (_: any, record: any) =>
-        record?.reporter?.nickname || record?.reporter?.name || "알 수 없음",
+      render: (_: any, record: any) => {
+        const nickname =
+          record?.reporter?.nickname || record?.reporter?.name || "알 수 없음";
+        return nickname;
+      },
       width: "10%",
     },
     {
       title: "신고일",
-      dataIndex: "created_at",
-      key: "created_at",
-      render: (_: any, record) =>
-        typeof record.created_at === "string"
-          ? record.created_at.replace("T", " ").slice(0, 19)
-          : "",
+      dataIndex: "createdAt",
+      key: "createdAt",
+      render: (_: any, record) => {
+        const dateStr = record.createdAt;
+        if (!dateStr) return "";
+        const parsed =
+          typeof dateStr === "string" ? new Date(dateStr) : dateStr;
+        return parsed.toLocaleString("ko-KR", { hour12: false });
+      },
       sorter: (a: ReportData, b: ReportData) =>
-        new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
       width: "20%",
     },
   ];
@@ -137,9 +147,10 @@ const ReportManagement = ({ data, target_type }: Props) => {
   useEffect(() => {
     const sorted = [...data].sort((a, b) =>
       order === "DESC"
-        ? new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-        : new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+        ? new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        : new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
     );
+
     setReport(sorted);
   }, [data, order]);
 
@@ -171,13 +182,15 @@ const ReportManagement = ({ data, target_type }: Props) => {
         </div>
       </div>
       <div className="manage-info">
-        <div>{target_type === "comment" ? "댓글" : "회원"}</div>
+        <div>타입: {target_type === "comment" ? "댓글" : "회원"}</div>
         <div className="manage-total-num">총 {report.length}건</div>
         <Select
           value={order}
           options={sortOptions}
           style={{ width: 120 }}
-          onChange={(value) => setOrder(value)}
+          onChange={(value) => {
+            setOrder(value);
+          }}
         />
       </div>
       <Table

@@ -13,7 +13,7 @@ interface ReportData {
     name: string;
     nickname: string;
   };
-  created_at: string;
+  createdAt: string;
   reported_user_id: number;
 }
 
@@ -43,7 +43,6 @@ const ReportDetail = ({ data, target_type }: Props) => {
           );
           router.push(`/reports/${target_type}`);
         } catch (error) {
-          console.error("삭제 실패", error);
           message.error("삭제 중 오류가 발생했습니다.");
         }
       },
@@ -65,7 +64,6 @@ const ReportDetail = ({ data, target_type }: Props) => {
           message.success("신고 처리되었습니다.");
           router.push(`/reports/${target_type}`);
         } catch (error) {
-          console.error("신고 처리 실패", error);
           message.error("신고 처리 중 오류가 발생했습니다.");
         }
       },
@@ -76,7 +74,9 @@ const ReportDetail = ({ data, target_type }: Props) => {
     <ReportDetailStyled className={clsx("reportdetail-wrap")}>
       <div className="report-header">
         <div>{target_type === "comment" ? "댓글" : "회원"} 신고 상세</div>
-        <Button>목록으로</Button>
+        <Button onClick={() => router.push(`/reports/${target_type}`)}>
+          목록으로
+        </Button>
       </div>
 
       <div className="row">
@@ -109,7 +109,7 @@ const ReportDetail = ({ data, target_type }: Props) => {
       <div className="row">
         <div className="label">신고일</div>
         <div className="value">
-          {data.created_at?.replace("T", " ").slice(0, 19) ?? ""}
+          {data.createdAt?.replace("T", " ").slice(0, 19) ?? ""}
         </div>
       </div>
 
