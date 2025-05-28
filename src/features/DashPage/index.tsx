@@ -50,7 +50,7 @@ const Dashboard = () => {
     {
       title: "작성자",
       dataIndex: "author",
-      render: () => "작성자 정보 없음",
+      render: (author: string) => author || "작성자 정보 없음",
     },
     {
       title: "조회수",
