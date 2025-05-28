@@ -35,7 +35,6 @@ const AlbumList = () => {
 
       setAlbums(mapped);
     } catch (err) {
-      console.error("앨범 불러오기 실패", err);
       message.error("앨범 목록을 불러오는데 실패했습니다.");
     }
   };

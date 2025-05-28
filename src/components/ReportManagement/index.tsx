@@ -32,22 +32,12 @@ const ReportManagement = ({ data, target_type }: Props) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const [order, setOrder] = useState<"DESC" | "ASC">("DESC");
 
-  console.log("🧩 [컴포넌트 렌더] ReportManagement 렌더됨");
-  console.log("🧩 [초기 props.data]:", data);
-
   // 최초 데이터 설정
   useEffect(() => {
-    console.log("🔁 [useEffect] data 갱신:", data);
     setReport(data);
   }, [data]);
 
-  // props 확인
-  useEffect(() => {
-    console.log("✅ [props.data] 내용 확인:", data);
-  }, [data]);
-
   const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
-    console.log("📌 [선택된 Row] 변경됨:", newSelectedRowKeys);
     setSelectedRowKeys(newSelectedRowKeys);
   };
 
@@ -56,8 +46,6 @@ const ReportManagement = ({ data, target_type }: Props) => {
     const selectedReports = report.filter((item) =>
       selectedRowKeys.includes(item.id)
     );
-
-    console.log("🛠 [handleReportAdd] 선택된 신고:", selectedReports);
 
     try {
       await Promise.all(
@@ -69,18 +57,16 @@ const ReportManagement = ({ data, target_type }: Props) => {
       const updatedReport = report.filter(
         (item) => !selectedRowKeys.includes(item.id)
       );
-      console.log("✅ [처리 후 리스트] 업데이트된 신고 목록:", updatedReport);
+
       setReport(updatedReport);
       setSelectedRowKeys([]);
     } catch (error) {
-      console.error("❌ [handleReportAdd] 신고 처리 실패:", error);
       message.error("신고 처리 중 문제가 발생했습니다.");
     }
   };
 
   // 삭제 처리
   const handleDelete = async () => {
-    console.log("🗑 [handleDelete] 선택된 신고 ID:", selectedRowKeys);
     try {
       await Promise.all(
         selectedRowKeys.map((id) => api.delete(`/reports/${id}`))
@@ -89,17 +75,15 @@ const ReportManagement = ({ data, target_type }: Props) => {
         (item: ReportData) => !selectedRowKeys.includes(item.id)
       );
       message.success("선택된 신고가 삭제되었습니다.");
-      console.log("✅ [handleDelete] 삭제 후 신고 목록:", filtered);
+
       setReport(filtered);
       setSelectedRowKeys([]);
     } catch (err) {
-      console.error("❌ [handleDelete] 삭제 중 에러 발생:", err);
       message.error("삭제 중 오류가 발생했습니다.");
     }
   };
 
   const handleDetailClick = (id: number) => {
-    console.log("➡️ [handleDetailClick] 상세페이지 이동:", id);
     router.push(`/reports/${target_type}/${id}`);
   };
 
@@ -118,7 +102,6 @@ const ReportManagement = ({ data, target_type }: Props) => {
       dataIndex: "reported_content",
       key: "reported_content",
       render: (text: string) => {
-        console.log("📝 [reported_content] 내용:", text);
         return text || "내용 없음";
       },
       width: "35%",
@@ -130,7 +113,6 @@ const ReportManagement = ({ data, target_type }: Props) => {
       render: (_: any, record: any) => {
         const nickname =
           record?.reporter?.nickname || record?.reporter?.name || "알 수 없음";
-        console.log("🙋‍♀️ [신고자 정보]", record.reporterId, "=>", nickname);
         return nickname;
       },
       width: "10%",
@@ -140,7 +122,6 @@ const ReportManagement = ({ data, target_type }: Props) => {
       dataIndex: "createdAt",
       key: "createdAt",
       render: (_: any, record) => {
-        console.log("📆 [createdAt] 원본 값:", record.createdAt);
         const dateStr = record.createdAt;
         if (!dateStr) return "";
         const parsed =
@@ -169,7 +150,7 @@ const ReportManagement = ({ data, target_type }: Props) => {
         ? new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         : new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
     );
-    console.log(`🔃 [정렬] ${order} 기준 정렬 완료:`, sorted);
+
     setReport(sorted);
   }, [data, order]);
 
@@ -208,7 +189,6 @@ const ReportManagement = ({ data, target_type }: Props) => {
           options={sortOptions}
           style={{ width: 120 }}
           onChange={(value) => {
-            console.log("📥 [Select] 정렬 선택:", value);
             setOrder(value);
           }}
         />

@@ -23,10 +23,6 @@ interface Props {
 }
 
 const ReportDetail = ({ data, target_type }: Props) => {
-  console.log("📌 ReportDetail 렌더링됨");
-  console.log("🧾 data:", data);
-  console.log("🎯 target_type:", target_type);
-
   const handleDelete = async () => {
     Modal.confirm({
       title: "삭제하시겠습니까?",
@@ -47,7 +43,6 @@ const ReportDetail = ({ data, target_type }: Props) => {
           );
           router.push(`/reports/${target_type}`);
         } catch (error) {
-          console.error("삭제 실패", error);
           message.error("삭제 중 오류가 발생했습니다.");
         }
       },
@@ -69,7 +64,6 @@ const ReportDetail = ({ data, target_type }: Props) => {
           message.success("신고 처리되었습니다.");
           router.push(`/reports/${target_type}`);
         } catch (error) {
-          console.error("신고 처리 실패", error);
           message.error("신고 처리 중 오류가 발생했습니다.");
         }
       },
@@ -80,7 +74,9 @@ const ReportDetail = ({ data, target_type }: Props) => {
     <ReportDetailStyled className={clsx("reportdetail-wrap")}>
       <div className="report-header">
         <div>{target_type === "comment" ? "댓글" : "회원"} 신고 상세</div>
-        <Button>목록으로</Button>
+        <Button onClick={() => router.push(`/reports/${target_type}`)}>
+          목록으로
+        </Button>
       </div>
 
       <div className="row">

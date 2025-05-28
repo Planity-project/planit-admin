@@ -37,7 +37,6 @@ const LoginPage = () => {
     try {
       const response = await api.post("/auth/admin/login", { email, password });
 
-      console.log("로그인 성공");
       setErrorMessage("");
       sessionStorage.setItem("isAdminLoggedIn", "true");
       router.push("/dashboard");
@@ -48,7 +47,6 @@ const LoginPage = () => {
         "아이디 또는 비밀번호를 확인해주세요";
 
       setErrorMessage(`로그인 실패: ${msg}`);
-      console.error("로그인 오류:", error);
     }
   };
 

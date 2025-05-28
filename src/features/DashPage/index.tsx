@@ -20,8 +20,6 @@ const dummyLoginTrend = [
 ];
 
 const Dashboard = () => {
-  console.log("🚀 Dashboard 컴포넌트 렌더 시작");
-
   const [stats, setStats] = useState({
     totalUsers: 0,
     activeUsers: 0,

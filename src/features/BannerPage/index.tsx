@@ -56,7 +56,6 @@ const BannerPage = () => {
             message.error("삭제를 실패했습니다. 다시 시도해주세요.");
           }
         } catch (error) {
-          console.error("삭제 중 오류 발생:", error);
           message.error("오류가 발생했습니다. 다시 시도해주세요.");
         }
       },
