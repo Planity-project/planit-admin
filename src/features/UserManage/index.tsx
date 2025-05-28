@@ -67,8 +67,6 @@ const UserManage = () => {
         console.error("서버 응답 에러:", err.response?.data);
         console.error("응답 상태 코드:", err.response?.status);
         console.error("응답 헤더:", err.response?.headers);
-      } else {
-        console.error("알 수 없는 에러:", err);
       }
     }
   };
@@ -146,7 +144,6 @@ const UserManage = () => {
       getUserList();
       setSelectedRowKeys([]);
     } catch (err) {
-      console.error("회원 삭제 실패:", err);
       message.error("회원 삭제에 실패했습니다. 잠시 후 다시 시도해주세요.");
     }
   };
