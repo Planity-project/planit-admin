@@ -22,16 +22,16 @@ const AlbumList = () => {
   const getAlbumList = async () => {
     try {
       const res = await api.get("/users/albumlist");
-      console.log("앨범 목록 API 응답:", res.data);
+
       const data = res.data;
 
       const mapped = data.map((x: any) => ({
         key: x.id,
         id: x.id,
-        title: x.album_title || "제목 없음", // ✅ 올바른 키로 변경
+        title: x.album_title || "제목 없음",
         leader: x.leader || "리더 없음",
-        paid: x.is_paid ? "결제 완료" : "미결제", // ✅ 올바른 키로 변경
-        createdAt: x.created_at, // ✅ 올바른 키로 변경
+        paid: x.is_paid ? "결제 완료" : "미결제",
+        createdAt: x.created_at,
       }));
 
       setAlbums(mapped);

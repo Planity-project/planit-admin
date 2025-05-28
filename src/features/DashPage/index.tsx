@@ -6,18 +6,8 @@ import {
   LoginOutlined,
   StopOutlined,
 } from "@ant-design/icons";
-import { Column, Line, Pie } from "@ant-design/plots";
+import { Line, Pie } from "@ant-design/plots";
 import api from "@/util/api";
-
-const dummyLoginTrend = [
-  { date: "2025-05-21", count: 120 },
-  { date: "2025-05-22", count: 200 },
-  { date: "2025-05-23", count: 150 },
-  { date: "2025-05-24", count: 300 },
-  { date: "2025-05-25", count: 250 },
-  { date: "2025-05-26", count: 400 },
-  { date: "2025-05-27", count: 350 },
-];
 
 const Dashboard = () => {
   const [stats, setStats] = useState({
@@ -42,9 +32,8 @@ const Dashboard = () => {
         setStats(statsRes.data);
         setPopularPosts(postsRes.data);
         setLoginTrend(trendRes.data);
-        console.log(trendRes.data);
       } catch (error) {
-        console.error(error);
+        console.error("대시보드 데이터 요청 실패:", error);
       }
       setLoading(false);
     };
@@ -76,7 +65,7 @@ const Dashboard = () => {
   ];
 
   const loginChartConfig = {
-    data: dummyLoginTrend,
+    data: loginTrend,
     xField: "date",
     yField: "count",
     smooth: true,
@@ -84,17 +73,9 @@ const Dashboard = () => {
     autoFit: true,
   };
 
-  const barChartConfig = {
-    data: loginTrend,
-    xField: "date",
-    yField: "count",
-    height: 300,
-    color: "#1890ff",
-  };
-
   const pieChartData = popularPosts.map((post: any) => ({
     type: post.title?.slice(0, 10) || "제목 없음",
-    value: post.likeCount || 0,
+    value: post.like || 0,
   }));
 
   const pieChartConfig = {
@@ -164,7 +145,7 @@ const Dashboard = () => {
           </Card>
         </Col>
         <Col span={12}>
-          <Card title="게시글 댓글 분포">
+          <Card title="게시글 좋아요 분포">
             <Pie {...pieChartConfig} />
           </Card>
         </Col>
