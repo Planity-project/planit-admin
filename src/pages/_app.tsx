@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Spin } from "antd";
 import { App as AntdApp } from "antd";
-import "antd/dist/reset.css";
 
 const NO_HEADER_ROUTES = ["/login"];
 
