@@ -1,16 +1,5 @@
+import path from "path";
 import withTM from "next-transpile-modules";
-
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-  images: {
-    unoptimized: true,
-    domains: ["localhost"],
-  },
-  compiler: {
-    styledComponents: true,
-  },
-};
 
 const transpileModules = [
   "@ant-design/icons-svg",
@@ -22,6 +11,30 @@ const transpileModules = [
   "rc-table",
   "rc-input",
   "@rc-component/util",
+  "antd",
+  "rc-checkbox",
+  "rc-dialog",
+  "rc-select",
+  "rc-upload",
+  "rc-tooltip",
+  "rc-tabs",
+  // 필요한 패키지 더 추가
 ];
+
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  compiler: {
+    styledComponents: true,
+  },
+  images: {
+    unoptimized: true,
+    domains: ["localhost", "13.209.89.42", "15.164.52.122"],
+  },
+  webpack(config) {
+    config.resolve.modules.push(path.resolve("./src"));
+    return config;
+  },
+};
 
 export default withTM(transpileModules)(nextConfig);
