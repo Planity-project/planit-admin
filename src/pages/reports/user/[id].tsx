@@ -12,7 +12,7 @@ interface ReportData {
     name: string;
     nickname: string;
   };
-  created_at: string;
+  createdAt: string;
   reported_user_id: number;
 }
 

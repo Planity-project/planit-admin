@@ -13,7 +13,7 @@ interface ReportData {
     name: string;
     nickname: string;
   };
-  created_at: string;
+  createdAt: string;
   reported_user_id: number;
 }
 
@@ -109,7 +109,7 @@ const ReportDetail = ({ data, target_type }: Props) => {
       <div className="row">
         <div className="label">신고일</div>
         <div className="value">
-          {data.created_at?.replace("T", " ").slice(0, 19) ?? ""}
+          {data.createdAt?.replace("T", " ").slice(0, 19) ?? ""}
         </div>
       </div>
 

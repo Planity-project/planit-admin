@@ -12,7 +12,7 @@ interface ReportData {
   content: string;
   reason: string;
   reporterId: string;
-  created_at: string;
+  createdAt: string;
   reported_user_id: number;
   // status: "pending" | "processed"; // 신고 상태 추가 가능
 }
@@ -112,14 +112,14 @@ const ReportManagement = ({ data, target_type }: Props) => {
     },
     {
       title: "신고일",
-      dataIndex: "created_at",
-      key: "created_at",
+      dataIndex: "createdAt",
+      key: "createdAt",
       render: (_: any, record) =>
-        typeof record.created_at === "string"
-          ? record.created_at.replace("T", " ").slice(0, 19)
+        typeof record.createdAt === "string"
+          ? record.createdAt.replace("T", " ").slice(0, 19)
           : "",
       sorter: (a: ReportData, b: ReportData) =>
-        new Date(b.created_at).getTime() - new Date(a.created_at).getTime(),
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
       width: "20%",
     },
   ];
@@ -137,8 +137,8 @@ const ReportManagement = ({ data, target_type }: Props) => {
   useEffect(() => {
     const sorted = [...data].sort((a, b) =>
       order === "DESC"
-        ? new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-        : new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+        ? new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        : new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
     );
     setReport(sorted);
   }, [data, order]);
