@@ -23,6 +23,10 @@ interface Props {
 }
 
 const ReportDetail = ({ data, target_type }: Props) => {
+  console.log("📌 ReportDetail 렌더링됨");
+  console.log("🧾 data:", data);
+  console.log("🎯 target_type:", target_type);
+
   const handleDelete = async () => {
     Modal.confirm({
       title: "삭제하시겠습니까?",

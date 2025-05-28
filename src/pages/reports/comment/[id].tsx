@@ -24,6 +24,9 @@ const ReportDetail = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log("🌀 router.isReady:", router.isReady);
+    console.log("🔍 id:", id);
+
     if (!router.isReady || !id) return;
 
     const fetchReport = async () => {
