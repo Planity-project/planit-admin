@@ -8,6 +8,13 @@ import {
 } from "@ant-design/icons";
 import { Line, Pie } from "@ant-design/plots";
 import api from "@/util/api";
+type Post = {
+  id: number;
+  title: string;
+  author: string;
+  views: number;
+  like: number;
+};
 
 const Dashboard = () => {
   const [stats, setStats] = useState({
@@ -16,7 +23,7 @@ const Dashboard = () => {
     loginCount: 0,
     suspendedUsers: 0,
   });
-  const [popularPosts, setPopularPosts] = useState([]);
+  const [popularPosts, setPopularPosts] = useState<Post[]>([]);
   const [loginTrend, setLoginTrend] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -81,10 +88,20 @@ const Dashboard = () => {
     autoFit: true,
   };
 
-  const pieChartData = popularPosts.map((post: any) => ({
-    type: post.title?.slice(0, 10) || "제목 없음",
-    value: post.like || 0,
-  }));
+  // ✅ 퍼센트 수동 계산
+  const totalLikes = popularPosts.reduce(
+    (sum, post) => sum + (post.like || 0),
+    0
+  );
+
+  const pieChartData = popularPosts.map((post: any) => {
+    const like = post.like || 0;
+    return {
+      type: post.title?.slice(0, 10) || "제목 없음",
+      value: like,
+      percent: totalLikes === 0 ? 0 : like / totalLikes,
+    };
+  });
 
   const pieChartConfig = {
     appendPadding: 10,
