@@ -89,20 +89,10 @@ const Dashboard = () => {
     autoFit: true,
   };
 
-  // ✅ 퍼센트 수동 계산
-  const totalLikes = popularPosts.reduce(
-    (sum, post) => sum + (post.like || 0),
-    0
-  );
-
-  const pieChartData = popularPosts.map((post) => {
-    const like = post.like || 0;
-    return {
-      type: post.title?.slice(0, 10) || "제목 없음",
-      value: like,
-      percent: totalLikes === 0 ? 0 : like / totalLikes,
-    };
-  });
+  const pieChartData = popularPosts.map((post) => ({
+    type: post.title?.slice(0, 10) || "제목 없음",
+    value: post.like || 0,
+  }));
 
   const pieChartConfig = {
     appendPadding: 10,
@@ -111,11 +101,9 @@ const Dashboard = () => {
     colorField: "type",
     radius: 0.9,
     label: {
-      content: (item: any) => {
-        const total = pieChartData.reduce((sum, d) => sum + d.value, 0);
-        const percent = total === 0 ? 0 : (item.value / total) * 100;
-        return `${item.type} ${percent.toFixed(1)}%`;
-      },
+      type: "inner",
+      content: (datum: any) =>
+        `${datum.type} ${(Number(datum.percent) * 100).toFixed(1)}%`,
     },
     interactions: [{ type: "element-active" }],
   };
