@@ -74,7 +74,7 @@ const BannerPage = () => {
       render: (_: any, record: Banner) => {
         return (
           <img
-            src={`http://localhost:5001${record.image_path}`}
+            src={`https://planit.ai.kr/api/${record.image_path}`}
             alt={record.title}
             className="banner-img"
           />
