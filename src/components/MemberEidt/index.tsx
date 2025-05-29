@@ -33,7 +33,14 @@ const MemberEdit = ({ id }: MemberEditProps) => {
 
   const handleSave = async () => {
     try {
-      await api.patch(`/users/${id}`, { nickname, status });
+      const today = new Date();
+      const suspendUntil = new Date(today.setFullYear(today.getFullYear() + 1));
+      await api.patch(`/users/${id}`, {
+        nickname,
+        status,
+        suspend_until: suspendUntil,
+        suspend_reason: "관리자에 의한 강제 정지",
+      });
       message.success("회원 정보가 수정되었습니다.");
     } catch (err) {
       message.error("수정에 실패했습니다.");
