@@ -10,19 +10,9 @@ const AlbumUserList = () => {
   const { albumId } = router.query;
   const [users, setUsers] = useState<any[]>([]);
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
-  const [albumTitle, setAlbumTitle] = useState("");
 
   useEffect(() => {
     if (!albumId) return;
-
-    const fetchAlbumTitle = async () => {
-      try {
-        const res = await api.get(`/albums/${albumId}`);
-        setAlbumTitle(res.data.title);
-      } catch (err) {
-        message.error("앨범 정보를 불러오지 못했습니다.");
-      }
-    };
 
     const fetchUsers = async () => {
       try {
@@ -36,7 +26,6 @@ const AlbumUserList = () => {
       }
     };
 
-    fetchAlbumTitle();
     fetchUsers();
   }, [albumId]);
 
@@ -100,7 +89,7 @@ const AlbumUserList = () => {
           marginBottom: 16,
         }}
       >
-        <TitleCompo title={`앨범 "${albumTitle}"의 유저 목록`} />
+        <TitleCompo title={`앨범 ID ${albumId}의 유저 목록`} />
         <div
           style={{
             display: "flex",
