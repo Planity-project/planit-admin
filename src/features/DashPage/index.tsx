@@ -8,6 +8,7 @@ import {
 } from "@ant-design/icons";
 import { Line, Pie } from "@ant-design/plots";
 import api from "@/util/api";
+
 type Post = {
   id: number;
   title: string;
@@ -94,7 +95,7 @@ const Dashboard = () => {
     0
   );
 
-  const pieChartData = popularPosts.map((post: any) => {
+  const pieChartData = popularPosts.map((post) => {
     const like = post.like || 0;
     return {
       type: post.title?.slice(0, 10) || "제목 없음",
