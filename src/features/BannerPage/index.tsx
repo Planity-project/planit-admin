@@ -23,9 +23,7 @@ const BannerPage = () => {
       try {
         const res = await api.get("/banner");
         setBanners(res.data);
-      } catch (err) {
-        console.error("배너 불러오기 실패", err);
-      }
+      } catch (err) {}
     };
 
     getBanners();

@@ -23,9 +23,7 @@ const BannerDetail = () => {
         try {
           const res = await api.get(`/banner/${id}`);
           setBanner(res.data);
-        } catch (err) {
-          console.error("배너 상세 불러오기 실패", err);
-        }
+        } catch (err) {}
       };
       getBanner();
     }

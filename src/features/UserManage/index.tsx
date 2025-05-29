@@ -63,10 +63,6 @@ const UserManage = () => {
       setUsers(mapped);
     } catch (err: unknown) {
       if (err instanceof AxiosError) {
-        console.error("유저 불러오기 실패:", err);
-        console.error("서버 응답 에러:", err.response?.data);
-        console.error("응답 상태 코드:", err.response?.status);
-        console.error("응답 헤더:", err.response?.headers);
       }
     }
   };

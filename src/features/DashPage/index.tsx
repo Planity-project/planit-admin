@@ -32,24 +32,16 @@ const Dashboard = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        console.log("📡 [대시보드 요청 시작]");
-
         const [statsRes, postsRes, trendRes] = await Promise.all([
           api.get("/admin/dashboard/stats"),
           api.get("/admin/dashboard/popular-posts"),
           api.get("/admin/dashboard/login-trend?range=7d"),
         ]);
 
-        console.log("✅ [통계 데이터 응답]", statsRes.data);
-        console.log("✅ [인기 게시글 응답]", postsRes.data);
-        console.log("✅ [로그인 트렌드 응답]", trendRes.data);
-
         setStats(statsRes.data);
         setPopularPosts(postsRes.data);
         setLoginTrend(trendRes.data);
-      } catch (error) {
-        console.error("❌ [대시보드 데이터 요청 실패]:", error);
-      }
+      } catch (error) {}
       setLoading(false);
     };
 
