@@ -111,8 +111,11 @@ const Dashboard = () => {
     colorField: "type",
     radius: 0.9,
     label: {
-      content: (item: any) =>
-        `${item.type} ${(item.percent * 100).toFixed(1)}%`,
+      content: (item: any) => {
+        const total = pieChartData.reduce((sum, d) => sum + d.value, 0);
+        const percent = total === 0 ? 0 : (item.value / total) * 100;
+        return `${item.type} ${percent.toFixed(1)}%`;
+      },
     },
     interactions: [{ type: "element-active" }],
   };
