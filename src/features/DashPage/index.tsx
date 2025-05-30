@@ -100,11 +100,11 @@ const Dashboard = () => {
     angleField: "value",
     colorField: "type",
     radius: 0.9,
-    label: {
-      type: "inner",
-      content: (datum: any) =>
-        `${datum.type} ${(Number(datum.percent) * 100).toFixed(1)}%`,
-    },
+    // label: {
+    //   type: "inner",
+    //   content: (datum: any) =>
+    //     `${datum.type} ${(Number(datum.percent) * 100).toFixed(1)}%`,
+    // },
     interactions: [{ type: "element-active" }],
   };
 
