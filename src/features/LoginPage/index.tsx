@@ -10,10 +10,10 @@ const LoginPage = () => {
   const [toggle, setToggle] = useState(true);
 
   // 아이디
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("admin@abc.abc");
 
   // 비밀번호
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("#a1234567");
 
   // 오류 메시지
   const [errorMessage, setErrorMessage] = useState("");
