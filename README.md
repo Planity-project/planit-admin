@@ -212,6 +212,15 @@
    <td><img src="https://github.com/user-attachments/assets/5371eba8-bb8e-44cb-9dbd-ea9b9a9c0c4d"/></td>
   </tr>
  </table>
+
+ <table>
+  <tr>
+   <th>반응형</th>
+  </tr>
+  <tr>
+   <td><img src="https://github.com/user-attachments/assets/67052b88-14a1-498e-a956-564a5823a821"/></td>
+  </tr>
+ </table>
 </div>
 
 <br/>
