@@ -209,7 +209,7 @@
   </tr>
   <tr>
    <td><img src="https://github.com/user-attachments/assets/9130f238-e6f8-4d58-a929-d2c602bdda16"/></td>
-   <td><img src="https://github.com/user-attachments/assets/67052b88-14a1-498e-a956-564a5823a821"/></td>
+   <td><img src="https://github.com/user-attachments/assets/5371eba8-bb8e-44cb-9dbd-ea9b9a9c0c4d"/></td>
   </tr>
  </table>
 </div>
