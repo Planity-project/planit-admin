@@ -5,7 +5,16 @@
 ![Image](https://github.com/user-attachments/assets/e4e87d6e-2095-457d-825e-58b4a28c5e05)
 
 
+![Image](https://github.com/user-attachments/assets/d9ee06ca-e627-4b85-b721-892802a28b97)
+![Image](https://github.com/user-attachments/assets/4bf746af-b70c-4d1d-b75e-444d0275f010)
+
+<img width="664" alt="Image" src="https://github.com/user-attachments/assets/30a0a9ff-b1c9-4008-af3a-382a38ff136f" />
+
+
+
+
 ![Image](https://github.com/user-attachments/assets/161fe2c6-0920-4430-b5c2-3910d5692f34)
+
 
 <br/>
 
@@ -188,11 +197,11 @@
  <table>
   <tr>
    <th> DASH BOARD </th>
-   <th> ALBUM </th>
+   <th> USER EDIT </th>
   </tr>
   <tr>
-    <td><img src="https://github.com/user-attachments/assets/7f24a248-9d84-4f45-a0b8-609d5f6c4bb9"/></td>
-    <td><img src="https://github.com/user-attachments/assets/4b80774d-57ce-4df6-b1ad-690079826908"/></td>
+    <td><img width="300"  src="https://github.com/user-attachments/assets/d9481e15-2e80-4548-971b-0738018b7d2f"/></td>
+    <td><img src="https://github.com/user-attachments/assets/e4e87d6e-2095-457d-825e-58b4a28c5e05"/></td>
   </tr>
  </table>
 
