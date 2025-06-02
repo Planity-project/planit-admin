@@ -1,17 +1,3 @@
-![Image](https://github.com/user-attachments/assets/e54e4d4c-5393-43c1-935a-d434761427d3)
-
-![Image](https://github.com/user-attachments/assets/9b341eac-8c41-4487-8511-81cf99f8b9e5)
-![Image](https://github.com/user-attachments/assets/9130f238-e6f8-4d58-a929-d2c602bdda16)
-![Image](https://github.com/user-attachments/assets/e4e87d6e-2095-457d-825e-58b4a28c5e05)
-
-
-![Image](https://github.com/user-attachments/assets/d9ee06ca-e627-4b85-b721-892802a28b97)
-![Image](https://github.com/user-attachments/assets/4bf746af-b70c-4d1d-b75e-444d0275f010)
-
-<img width="664" alt="Image" src="https://github.com/user-attachments/assets/30a0a9ff-b1c9-4008-af3a-382a38ff136f" />
-
-
-
 
 ![Image](https://github.com/user-attachments/assets/161fe2c6-0920-4430-b5c2-3910d5692f34)
 
@@ -207,21 +193,23 @@
 
  <table>
   <tr>
-   <th> MY ACCOUNT </th>
-   <th> DETAIL </th>
+   <th> ALBUM </th>
+   <th> REPORT </th>
   </tr>
   <tr>
-    <td><img src="https://github.com/user-attachments/assets/93c1a316-0abf-48f6-8fe9-3789677468e0"/></td>
-    <td><img src="https://github.com/user-attachments/assets/97c3ac7a-8e8b-4d4e-aece-a6a35f8e2e6f"/></td>
+    <td><img src="https://github.com/user-attachments/assets/fac91a04-60cd-4040-be8a-c7480382cdbf"/></td>
+    <td><img src="https://github.com/user-attachments/assets/9b341eac-8c41-4487-8511-81cf99f8b9e5"/></td>
   </tr>
  </table>
 
  <table>
   <tr>
-   <th>반응형</th>
+   <th> BANNER </th>
+   <th> BLACK LIST </th>
   </tr>
   <tr>
-   <td> <img src="https://github.com/user-attachments/assets/67052b88-14a1-498e-a956-564a5823a821"/> </td>
+   <td><img src="https://github.com/user-attachments/assets/9130f238-e6f8-4d58-a929-d2c602bdda16"/></td>
+   <td><img src="https://github.com/user-attachments/assets/67052b88-14a1-498e-a956-564a5823a821"/></td>
   </tr>
  </table>
 </div>
