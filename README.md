@@ -227,59 +227,45 @@
 
 
 
-## ⚙ 주요 기능
-<h2 >🔐 관리자 인증 및 권한 관리</h2>
+# ⚙ 주요 기능
 
-- 2.👤 회원 관리
-  - 👥 회원 목록 조회 및 정지 / 해제
-  - 📷 앨범 목록 조회(공유 앨범 유저 리스트)
-  - 🚫 블랙 리스트 조회 (누적 3번 이상)
-- 3.🚨 신고 관리
-  - 💬 댓글 신고 목록 조회 및 신고 추가 / 신고 삭제
-  - 👤 회원 신고 목록 조회 및 신고 추가 / 신고 삭제
-- 4.📰 배너(광고) 관리
-  - 📰 배너(광고) 목록 조회 및 추가 / 삭제
+# 🔐 관리자 인증 및 권한 관리
 
+## 📊 대시보드 통계
 
+- 가입한 유저 수, 로그인 수, 정지 유저 수 확인  
+- 인기 게시글 Top 5, 최근 7일 접속자 수 추이 확인  
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d9481e15-2e80-4548-971b-0738018b7d2f" width="700"/>
+</p>
 
 
-<br/>
+## 👤 회원 관리
 
-<h2> 📊 대시보드 통계 </h2>
-<h4>&nbsp&nbsp&nbsp&nbsp-&nbsp가입한 유저의 수, 로그인한 수, 정지 유저 수 확인 </h4>
-<h4>&nbsp&nbsp&nbsp&nbsp-&nbsp인기 게시글 Top 5, 최근 7일 접속자 수 추이 확인</h4>
-<div align="center">
+- 👥 회원 목록 조회 및 정지 / 해제  
+- 📷 앨범 목록 조회 (공유 앨범 유저 리스트 확인)  
+- 🚫 블랙 리스트 조회 (누적 3회 이상)  
 
-<img width="700"  src="https://github.com/user-attachments/assets/d9481e15-2e80-4548-971b-0738018b7d2f"/>
-
-  
-</div>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/207969d3-75e6-4511-a9fc-8bb1e3e81b6c" width="700"/>
+</p>
 
 
+## 🚨 신고 관리
+
+- 💬 댓글 신고 목록 조회 및 신고 추가 / 삭제  
+- 👤 회원 신고 목록 조회 및 신고 추가 / 삭제  
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9b341eac-8c41-4487-8511-81cf99f8b9e5" width="700"/>
+</p>
 
 
-<h2> 👤 회원 관리 </h2>
-<h4>&nbsp&nbsp&nbsp&nbsp-&nbsp회원 목록 조회 및 정치 / 해제 </h4>
-<h4>&nbsp&nbsp&nbsp&nbsp-&nbsp앨범 목록 조회( 공유 앨범 유저 리스트 확인 ) </h4>
-<h4>&nbsp&nbsp&nbsp&nbsp-&nbsp블랙 리스트 조회 </h4>
-<div align="center">
- 
-![Image](https://github.com/user-attachments/assets/cbeba906-589a-42ad-b236-fbab7332873a)
-  
-</div>
+## 📰 배너(광고) 관리
 
-<br/>
+- 📰 배너(광고) 목록 조회 및 추가 / 삭제  
 
-
-<h2> ⛑ 관리자 페이지 </h2>
-<h4>&nbsp&nbsp&nbsp&nbsp-&nbsp최근 가입자 수 , 현재 접속자 수 , 최근 인기 게시물 등 확인 가능 대시보드</h4>
-<h4>&nbsp&nbsp&nbsp&nbsp-&nbsp내 정보 페이지 광고 배너 등록 </h4>
-<h4>&nbsp&nbsp&nbsp&nbsp-&nbsp유저 신고 관리 및 블랙리스트 관리 가능 </h4>
-<div align="center">
-</div>
-
-<br/>
-
-
-
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9130f238-e6f8-4d58-a929-d2c602bdda16" width="700"/>
+</p>
