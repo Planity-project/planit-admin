@@ -228,11 +228,8 @@
 
 
 ## ⚙ 주요 기능
-🔐 관리자 인증 및 권한 관리
-- 1.📊 대시보드 통계
-  - 📈 가입자 수 / 로그인 수 / 정지 유저 수
-  - ⭐️ 인기 게시글 Top 5
-  - 📈 최근 7일 접속자 수 추이
+<h2 >🔐 관리자 인증 및 권한 관리</h2>
+
 - 2.👤 회원 관리
   - 👥 회원 목록 조회 및 정지 / 해제
   - 📷 앨범 목록 조회(공유 앨범 유저 리스트)
@@ -248,20 +245,23 @@
 
 <br/>
 
-<h2> ⛑ 신고 기능 </h2>
-<h4>&nbsp&nbsp&nbsp&nbsp-&nbsp앨범의 사진이나 댓글에 관해서 해당 유저 신고 가능 </h4>
-<h4>&nbsp&nbsp&nbsp&nbsp-&nbsp신고 시 관리자 승인 후 신고 타겟 유저에 대한 이용 제한(사용 정지 3일 , 5일 등) </h4>
+<h2> 📊 대시보드 통계 </h2>
+<h4>&nbsp&nbsp&nbsp&nbsp-&nbsp가입한 유저의 수, 로그인한 수, 정지 유저 수 확인 </h4>
+<h4>&nbsp&nbsp&nbsp&nbsp-&nbsp인기 게시글 Top 5, 최근 7일 접속자 수 추이 확인</h4>
 <div align="center">
- 
- ![Image](https://github.com/user-attachments/assets/5752666b-4945-47be-9218-8d04f533a157)
+
+<img width="700"  src="https://github.com/user-attachments/assets/d9481e15-2e80-4548-971b-0738018b7d2f"/>
+
   
 </div>
 
 
 
 
-<h2> 📢 신고 시 이용에 대한 제한 </h2>
-<h4>&nbsp&nbsp&nbsp&nbsp-&nbsp신고 누적 시 이용 제한</h4>
+<h2> 👤 회원 관리 </h2>
+<h4>&nbsp&nbsp&nbsp&nbsp-&nbsp회원 목록 조회 및 정치 / 해제 </h4>
+<h4>&nbsp&nbsp&nbsp&nbsp-&nbsp앨범 목록 조회( 공유 앨범 유저 리스트 확인 ) </h4>
+<h4>&nbsp&nbsp&nbsp&nbsp-&nbsp블랙 리스트 조회 </h4>
 <div align="center">
  
 ![Image](https://github.com/user-attachments/assets/cbeba906-589a-42ad-b236-fbab7332873a)
